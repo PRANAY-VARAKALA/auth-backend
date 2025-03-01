@@ -3,9 +3,20 @@ const mongoose = require("mongoose");
 const router = require("./routes/users");
 const errorHandler = require("./middlewares/errorHandler");
 const app = express();
+const cors = require("cors");
+
+// CORS configuration
+const corsOptions = {
+  origin: 'http://localhost:8081', // Your frontend URL
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed methods
+  allowedHeaders: ['Content-Type', 'Authorization'], // Allowed headers
+  credentials: true, // Allow credentials (e.g., cookies)
+};
+app.use(cors(corsOptions));
+
 //! Connect to mongodb
 mongoose
-  .connect("mongodb+srv://auth:bittu%40143%24@cluster0.lbama.mongodb.net/mydb?retryWrites=true&w=majority")
+  .connect("mongodb+srv://pranaygoudv:pranaygoudv123@cluster0.y9gfd.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
   .then(() => console.log("Db connected successfully"))
   .catch((e) => console.log(e));
 
